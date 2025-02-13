@@ -1,0 +1,26 @@
+{
+  "name": "ratings-and-reviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Node-It-Alls-SDC/Ratings-and-Reviews.git"
+  },
+  "author": "Andrew Myronchuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Node-It-Alls-SDC/Ratings-and-Reviews/issues"
+  },
+  "homepage": "https://github.com/Node-It-Alls-SDC/Ratings-and-Reviews#readme",
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.0",
+    "mysql2": "^3.12.0"
+  }
+}
