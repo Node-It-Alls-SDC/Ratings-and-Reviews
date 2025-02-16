@@ -18,15 +18,16 @@ const initializeDB = async () => {
       id INT AUTO_INCREMENT PRIMARY KEY,
       product_id INT NOT NULL,
       rating TINYINT NOT NULL,
-      date_unix_timestamp BIGINT NOT NULL,
+      date DATETIME DEFAULT CURRENT_TIMESTAMP,
       summary VARCHAR(255) NOT NULL,
       body VARCHAR(1000) NOT NULL,
       recommend BOOLEAN NOT NULL,
-      reported BOOLEAN NOT NULL,
+      reported BOOLEAN DEFAULT FALSE,
       reviewer_name VARCHAR(255) NOT NULL,
       reviewer_email VARCHAR(255) NOT NULL,
       response VARCHAR(1000),
-      helpfulness INT NOT NULL
+      helpfulness INT DEFAULT 0,
+      INDEX idx_product_reported (product_id, reported)
     )`);
     console.log('Successfully initialized reviews table.')
 

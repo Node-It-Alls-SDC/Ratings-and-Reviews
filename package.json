@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server-dev": "npx nodemon --watch . index.js",
+    "etl": "node scripts/etl.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,10 @@
     "csv-parser": "^3.2.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.10.0",
+    "morgan": "^1.10.0",
     "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

@@ -14,7 +14,7 @@ const etlReviews = async () => {
         Number(data.id),
         Number(data.product_id),
         Number(data.rating),
-        Number(data.date),
+        new Date(Number(data.date)).toISOString().slice(0, 19).replace('T', ' '),
         data.summary,
         data.body,
         data.recommend === 'true',
