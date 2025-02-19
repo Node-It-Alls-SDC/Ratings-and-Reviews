@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server-dev": "npx nodemon --watch . index.js",
-    "etl": "node scripts/etl.js"
+    "etl": "node scripts/etl.js",
+    "test": "mocha tests/tests.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,13 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "morgan": "^1.10.0",
-    "mysql2": "^3.12.0"
+    "mysql2": "^3.12.0",
+    "perf_hooks": "^0.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "chai": "^3.5.0",
+    "mocha": "^11.1.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
   }
 }

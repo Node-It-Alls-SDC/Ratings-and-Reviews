@@ -8,8 +8,6 @@ module.exports = {
       const count = Number(req.query.count) || 5;
       const sort = req.query.sort || 'relevant';
 
-      // console.log(productId, page, count, sort);
-
       const results = await models.reviews.getSome(productId, page, count, sort);
       const resultsObj = {
         product: productId.toString(),
@@ -38,10 +36,8 @@ module.exports = {
         characteristics
       } = req.body;
 
-      // console.log(productId, rating, summary, body, recommend, name, email, photos, characteristics);
-
       await models.reviews.addOne(productId, rating, summary, body, recommend, name, email, photos, characteristics);
-      res.status(201).send('Successfully added a new review.');
+      res.status(201).json({ message: 'Successfully added a new review.' });
     } catch (err) {
       const errMsg = 'Failed to add a review.'
       console.error(errMsg, err);

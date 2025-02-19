@@ -25,9 +25,11 @@ module.exports = {
         WHERE review_id IN (SELECT id FROM reviews WHERE product_id = ? AND reported = FALSE)
         GROUP BY reviews_characteristics.characteristic_id, characteristics.name
       `;
-      const [ratingsAndRecommended] = await pool.query(query1, [productId]);
-      const [reviewsCharacteristics] = await pool.query(query2, [productId, productId]);
-      return [ratingsAndRecommended, reviewsCharacteristics];
+      const [ratingsAndRecommended, reviewsCharacteristics] = await Promise.all([
+        pool.query(query1, [productId]),
+        pool.query(query2, [productId, productId])
+      ]);
+      return [ratingsAndRecommended[0], reviewsCharacteristics[0]];
     } catch (err) {
       const errMsg = 'Failed to fetch reviews metadata.';
       console.error(errMsg, err);

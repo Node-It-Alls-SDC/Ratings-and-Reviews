@@ -10,10 +10,10 @@ const app = express();
 // MIDDLEWARE
 app.use(express.json());
 // Logging
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 // Routes
 app.use('/', router);
 
-app.listen(process.env.PORT, () => {
+module.exports = app.listen(process.env.PORT, () => {
   console.log(`Server is listening on port ${process.env.PORT}...`);
 });

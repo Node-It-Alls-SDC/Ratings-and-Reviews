@@ -61,7 +61,6 @@ module.exports = {
 
       const [result] = await pool.query(query, [productId, rating, summary, body, recommend, name, email]);
       const newReviewId = result.insertId;
-      console.log('Inserted a new review', newReviewId);
 
       // Insert in photos table
       if (photos && photos.length > 0) {
@@ -76,7 +75,6 @@ module.exports = {
           VALUES ${photoValues}
         `;
         await pool.query(photosQuery, photoParameters);
-        console.log(`Inserted photos for review ${newReviewId}`);
       }
 
       // Insert in reviews_characteristics table
@@ -92,7 +90,6 @@ module.exports = {
         VALUES ${characteristicsValues}
       `;
       await pool.query(reviewsCharacteristicsQuery, characteristicsParameters);
-      console.log(`Inserted characteristics for review ${newReviewId}`)
 
     } catch (err) {
       const errMsg = 'Failed to insert a review';
@@ -108,7 +105,6 @@ module.exports = {
       WHERE id = ?
       `;
       await pool.query(query, [reviewId]);
-      console.log(`Updated helpfulness of review ${reviewId}`);
     } catch (err) {
       const errMsg = `Failed to update helpfulness of review ${reviewId}`;
       console.error(errMsg, err);
@@ -123,7 +119,6 @@ module.exports = {
       WHERE id = ?
       `;
       await pool.query(query, [reviewId]);
-      console.log(`Updated reported of review ${reviewId}`);
     } catch (err) {
       const errMsg = `Failed to update reported of review ${reviewId}`;
       console.error(errMsg, err);

@@ -1,0 +1,19 @@
+config:
+  target: 'http://127.0.0.1:3000'
+  phases:
+    - duration: 30
+      arrivalRate: 1
+      rampTo: 10
+      name: 'Warm up the API'
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 100
+      name: 'Ramp up to 100 req/s'
+    - duration: 60
+      arrivalRate: 100
+      name: 'Sustain peak load'
+scenarios:
+  - name: 'Update review to show it was found helpful (PUT /reviews/:review_id/helpful)'
+    flow:
+      - put:
+          url: '/reviews/{{ $randomNumber(10000, 20000) }}/helpful'

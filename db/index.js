@@ -36,6 +36,7 @@ const initializeDB = async () => {
       id INT AUTO_INCREMENT PRIMARY KEY,
       url VARCHAR(255) NOT NULL,
       review_id INT NOT NULL,
+      INDEX idx_review_id_photos (review_id),
       FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
     )`)
     console.log('Successfully initialized photos table.')
@@ -54,6 +55,8 @@ const initializeDB = async () => {
       characteristic_id INT NOT NULL,
       review_id INT NOT NULL,
       value TINYINT NOT NULL,
+      INDEX idx_review_id_reviews_characteristics (review_id),
+      INDEX idx_characteristic_id (characteristic_id),
       FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE,
       FOREIGN KEY (characteristic_id) REFERENCES characteristics(id) ON DELETE CASCADE
     )`)

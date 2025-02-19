@@ -27,7 +27,6 @@ module.exports = {
         result.characteristics[row.name].value = row.characteristic_avg;
       })
 
-      console.log(reviewsCharacteristics);
       res.status(200).json(result);
     } catch (err) {
       const errMsg = 'Failed to fetch reviews metadata.'
